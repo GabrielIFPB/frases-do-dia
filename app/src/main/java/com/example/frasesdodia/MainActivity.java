@@ -11,8 +11,22 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button btn_nova_frase;
+    private TextView texto_nova_frase;
+    private List<String> frases = new ArrayList<String>() {
+        {
+            add("nada");
+            add("tudo");
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +35,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        this.btn_nova_frase = findViewById(R.id.btn_nova_frase_id);
+        this.texto_nova_frase = findViewById(R.id.texto_frase_id);
+
+        this.texto_nova_frase.setText(frases.get(1));
+
+        this.btn_nova_frase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
             }
         });
     }
